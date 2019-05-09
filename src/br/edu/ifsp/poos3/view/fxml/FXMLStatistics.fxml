@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="404.0" prefWidth="1079.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.poos3.controller.WindowStatisticsController">
+   <children>
+      <TableView fx:id="table" layoutX="11.0" layoutY="14.0" prefHeight="200.0" prefWidth="819.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <columns>
+          <TableColumn fx:id="cCodigo" prefWidth="150.0" text="Código" />
+          <TableColumn fx:id="cRegulares" prefWidth="150.0" text="Alunos Regulares" />
+            <TableColumn fx:id="cAtrasados" prefWidth="150.0" text="Alunos Atrasados" />
+            <TableColumn fx:id="cTotal" prefWidth="150.0" text="Total de Alunos" />
+            <TableColumn fx:id="cPorcentagem" prefWidth="150.0" text="PorcentagemAtrasados" />
+            <TableColumn fx:id="cAtrasoMedio" prefWidth="150.0" text="Atraso Médio" />
+            <TableColumn fx:id="cDemanda" prefWidth="150.0" text="Demanda Semestral" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
