@@ -1,5 +1,7 @@
 package br.edu.ifsp.poos3.controller;
 
+import br.edu.ifsp.poos3.DAO.DAO;
+import br.edu.ifsp.poos3.DAO.StudentDAO;
 import br.edu.ifsp.poos3.model.ClassStatistics;
 import br.edu.ifsp.poos3.model.Student;
 import br.edu.ifsp.poos3.model.StudentClass;
@@ -57,7 +59,9 @@ public class WindowClassesController {
             return;
 
         try {
-            students = DataLoader.loadStudents(fileStudents);
+            DAO<Student,String> dao = new StudentDAO();
+            students = dao.importAsMap(fileStudents.getPath());
+
             File fileStudentClasses = fileChooser.showOpenDialog(table.getScene().getWindow());
 
             if(fileStudentClasses == null)
@@ -79,6 +83,19 @@ public class WindowClassesController {
             e.printStackTrace();
         }
 
+    }
+
+    public void export(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+        File fileStudents = fileChooser.showSaveDialog(table.getScene().getWindow());
+
+        if(fileStudents == null)
+            return;
+
+        DAO<Student, String> dao = new StudentDAO();
+        dao.export(new ArrayList<>(students.values()), fileStudents.getAbsolutePath());
+        System.out.println("Arquivo Exportado");
     }
 
     private void bindTable() {
@@ -126,6 +143,12 @@ public class WindowClassesController {
         }
     }
 
+    public void filterByPPC(ActionEvent actionEvent) {
+        if(loaded){
+            refill(filteredTableData);
+        }
+    }
+
     private void refill(List<StudentClassRow> data) {
         table.getItems().clear();
         for (StudentClassRow r : data) {
@@ -136,12 +159,6 @@ public class WindowClassesController {
             }
         }
         lbEntradas.setText("Número de entradas: " + table.getItems().size());
-    }
-
-    public void filterByPPC(ActionEvent actionEvent) {
-        if(loaded){
-            refill(filteredTableData);
-        }
     }
 
     public void showStatisticsWindow(ActionEvent actionEvent) {

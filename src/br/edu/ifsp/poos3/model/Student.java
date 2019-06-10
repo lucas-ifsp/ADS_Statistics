@@ -86,4 +86,8 @@ public class Student {
     public void setFrequencia(double frequencia) {
         this.frequencia = frequencia;
     }
+
+    public String toString(){
+        return  "1;"+prontuario+";"+ nome +";" + anoIngresso + ";" + frequencia +";"+ ira + ";" +semIngresso+"\n";
+    }
 }

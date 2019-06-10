@@ -19,6 +19,7 @@
           <Menu mnemonicParsing="false" text="Arquivo">
             <items>
               <MenuItem fx:id="itLoad" mnemonicParsing="false" onAction="#load" text="Carregar" />
+                  <MenuItem fx:id="itExport" mnemonicParsing="false" onAction="#export" text="Exportar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Dados">

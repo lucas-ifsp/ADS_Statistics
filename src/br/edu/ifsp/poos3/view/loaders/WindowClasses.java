@@ -17,7 +17,7 @@ public class WindowClasses extends Application {
         FXMLLoader loader =  new FXMLLoader();
         Pane graph = loader.load(getClass().getResource("/br/edu/ifsp/poos3/view/fxml/FXMLClasses.fxml"));
 
-        Scene scene = new Scene(graph, 1400, 1000);
+        Scene scene = new Scene(graph, 1400, 900);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Classes vs Students");
         primaryStage.show();
