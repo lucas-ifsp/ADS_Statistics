@@ -94,7 +94,7 @@ public class WindowClassesController {
             return;
 
         DAO<Student, String> dao = new StudentDAO();
-        dao.export(new ArrayList<>(students.values()), fileStudents.getAbsolutePath());
+        ((StudentDAO) dao).exportFiltered(table.getItems(), fileStudents.getAbsolutePath());
         System.out.println("Arquivo Exportado");
     }
 

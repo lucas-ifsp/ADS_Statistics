@@ -1,6 +1,7 @@
 package br.edu.ifsp.poos3.DAO;
 
 import br.edu.ifsp.poos3.model.Student;
+import br.edu.ifsp.poos3.view.support.StudentClassRow;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,6 +16,15 @@ public class StudentDAO implements DAO<Student, String> {
         try(PrintWriter out = new PrintWriter(new FileOutputStream(new File(destinationPath)))){
             for (Student student : list)
                 out.append(student.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportFiltered(List<StudentClassRow> list, String destinationPath) {
+        try(PrintWriter out = new PrintWriter(new FileOutputStream(new File(destinationPath)))){
+            for (StudentClassRow r : list)
+                out.append(r.getStudent().toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
